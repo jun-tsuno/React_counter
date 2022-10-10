@@ -1,44 +1,28 @@
 import './App.css';
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
 
-class App extends React.Component {
-    constructor(props){
-        super(props)
-        this.state = { count: 0 };
+const App = () => {
+    const [count, setCount] = useState(0);
+
+    let isColor = '';
+    if(count > 0) {
+        isColor = 'green';
+    } else if(count < 0) {
+        isColor = 'red';
     }
 
-    onIncrement = () => {
-        this.setState(state => ({
-            count: state.count + 1
-        }))
-    };
-
-    onReset = () => {
-        this.setState(state => ({
-            count: 0
-        }))
-    };
-
-    onDecrement = () => {
-        this.setState(state => ({
-            count: state.count - 1
-        }))
-    };
-
-    render() {
         return(
             <div className='container'>
                 <h1>COUNTER</h1>
-                <p>{this.state.count}</p>
+                <p style={{color: isColor}}>{count}</p>
                 <div className="buttons">
-                    <Button name="INCREMENT" click={this.onIncrement}/>
-                    <Button name="RESET" click={this.onReset}/>
-                    <Button name="DECREMENT" click={this.onDecrement}/>
+                    <Button name="INCREMENT" click={()=>setCount(count+1)} color={'increment'}/>
+                    <Button name="RESET" click={()=>setCount(0)} color={'reset'}/>
+                    <Button name="DECREMENT" click={()=>setCount(count-1)} color={'decrement'}/>
                 </div>
             </div>
         );
     }
-}
 
 export default App;

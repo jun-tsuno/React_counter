@@ -5,7 +5,17 @@ button {
     margin: 0 10px;
     border-radius: 50px;
     font-family: 'Righteous', cursive;
-    background-color: #377D71;
     color: white;
 }
 
+.increment {
+    background-color: #377D71;
+}
+
+.reset {
+    background-color: rgba(116, 115, 115, 0.937);
+}
+
+.decrement {
+    background-color: rgb(255, 162, 0);
+}
